@@ -36,6 +36,7 @@ namespace Assets.Scripts
         #endregion
         
         
+        #region Fields
         private CameraController _cameraController;
         private MenuController _menu;
         private InputController _inputController = new InputController();
@@ -44,6 +45,11 @@ namespace Assets.Scripts
         private IController _slickController;
         private readonly List<IExecutable> _executables = new List<IExecutable>();
 
+        #endregion
+
+
+        #region  UnityMethods
+        
         private void Start()
         {
             _menu = new MenuController(_menuTextPrefab, _menuButtonPrefab);
@@ -58,7 +64,12 @@ namespace Assets.Scripts
                 _executables[i].Execute();
             }
         }
+        
+        #endregion
 
+
+        #region  Methods
+        
         private void StartGame()
         {
             _menu.Close();
@@ -88,5 +99,7 @@ namespace Assets.Scripts
             _slickController = null;
             _menu.View("Вы проиграли!");
         }
+        
+        #endregion
     }
 }
