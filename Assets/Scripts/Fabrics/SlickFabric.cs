@@ -6,7 +6,7 @@ namespace Assets.Scripts.Fabrics
 {
     public class SlickFabric
     {
-        public (IView, SlickController) Contruct(Vector3 startPosition, GameObject prefab, Camera camera)
+        public (IView, IController) Contruct(Vector3 startPosition, GameObject prefab, Camera camera)
         {
             var view = GameObject.Instantiate(prefab, startPosition, Quaternion.identity)
                 .AddComponent<Slick>();

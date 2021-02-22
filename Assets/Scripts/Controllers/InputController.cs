@@ -12,12 +12,12 @@ namespace Assets.Scripts.Controllers
         private Vector3 _currentPointClick;
         private Vector3 _direction;
 
-        public void AddSlickController(SlickController controller)
+        public void AddSlickController(IController controller)
         {
             _onThrow += controller.Throw;
         }
 
-        public void RemoveSlickController(SlickController controller)
+        public void RemoveSlickController(IController controller)
         {
             _onThrow -= controller.Throw;
         }

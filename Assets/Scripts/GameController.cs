@@ -41,7 +41,7 @@ namespace Assets.Scripts
         private InputController _inputController = new InputController();
         private readonly SlickFabric _slickFabric = new SlickFabric();
         private LevelFabric _levelFabric = new LevelFabric();
-        private SlickController _slickController;
+        private IController _slickController;
         private readonly List<IExecutable> _executables = new List<IExecutable>();
 
         private void Start()

@@ -6,15 +6,14 @@ using Object = UnityEngine.Object;
 
 namespace Assets.Scripts.Controllers
 {
-    public class SlickController : IController, IDisposable, IExecutable
+    public class SlickController : IController
     {
     private IView _slickView;
-    private IModel _slickModel;
     private Camera _camera;
 
     private Vector3 _currentPointClick;
 
-    public Action onDeath { get; set; } = delegate {  };
+    public Action onDeath { get; set; } = delegate { };
 
     public SlickController(IView view, Camera camera)
     {
@@ -36,7 +35,6 @@ namespace Assets.Scripts.Controllers
     {
         _camera = null;
         _currentPointClick = default;
-        _slickModel = null;
         var oldView = _slickView;
         _slickView = null;
         Object.Destroy(oldView.Transform.gameObject);
@@ -46,7 +44,7 @@ namespace Assets.Scripts.Controllers
     public void Execute()
     {
         var distance = _camera.farClipPlane;
-        if (_slickView?.Transform.position.y <=
+        if (_slickView.Transform.position.y <=
             _camera.ViewportToWorldPoint(new Vector3(0, 0, distance)).y)
         {
             onDeath.Invoke();
