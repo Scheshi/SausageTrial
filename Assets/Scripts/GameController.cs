@@ -25,6 +25,8 @@ namespace Assets.Scripts
         [SerializeField] private GameObject _levelObjectPrefab;
         [SerializeField] private float _piecesMinHeight;
         [SerializeField] private float _piecesMaxHeight;
+        [SerializeField] private float _piecesMinWidth;
+        [SerializeField] private float _piecesMaxWidth;
         [SerializeField] private int _piecesCount;
         [SerializeField] private int _voidChanceInPersent;
 
@@ -75,7 +77,8 @@ namespace Assets.Scripts
             _menu.Close();
             _levelFabric.Contruct
             (_levelObjectPrefab, _piecesCount, new Vector3(0.0f, -0.5f, 0.0f),
-                _piecesMinHeight, _piecesMaxHeight, _voidChanceInPersent);
+                _piecesMinHeight, _piecesMaxHeight, _piecesMinWidth, _piecesMaxWidth,
+                _voidChanceInPersent);
             var contructPlayer = _slickFabric.Contruct(_startPosition, _slickPrefab, Camera.main);
             _cameraController = new CameraController(contructPlayer.Item1.Transform, Camera.main, new Vector3(5.0f, 5.0f, 30.0f));
             _inputController.AddSlickController(contructPlayer.Item2);

@@ -10,21 +10,21 @@ namespace Assets.Scripts.Fabrics
         private Transform _parentObject;
         
         
-        public void Contruct(GameObject prefab, int piecesCount, Vector3 startPosition, float minHeight, float maxHeight, int voidChance)
+        public void Contruct(GameObject prefab, int piecesCount, Vector3 startPosition, float minHeight, float maxHeight, float minWidth, float maxWidth, int voidChance)
         {
             _parentObject = new GameObject("levelLayer").transform;
-            var offset = prefab.transform.localScale.x;
             var currentPosition = startPosition;
             for (int i = 0; i < piecesCount; i++)
             {
                 var piece = Object.Instantiate(prefab, currentPosition, Quaternion.identity, _parentObject);
+                var offset = piece.transform.localScale.x;
                 currentPosition.x -= offset;
-                piece.transform.localScale = new Vector3(offset,
+                piece.transform.localScale = new Vector3(Random.Range(minWidth, maxWidth),
                     Random.Range(minHeight, maxHeight),
                     piece.transform.localScale.z);
-                if (Random.Range(0, 100) <= voidChance)
+                if (Random.Range(0, 101) <= voidChance)
                 {
-                    currentPosition.x -= offset;
+                    currentPosition.x -= Random.Range(minWidth, maxWidth);
                 }
             }
         }

@@ -227,8 +227,10 @@ MonoBehaviour:
     type: 3}
   _piecesMinHeight: 0.2
   _piecesMaxHeight: 15
+  _piecesMinWidth: 0.5
+  _piecesMaxWidth: 5
   _piecesCount: 150
-  _voidChanceInPersent: 10
+  _voidChanceInPersent: 3
   _menuTextPrefab: {fileID: 1927552205808926221, guid: d21d918f0f304f14ab5398241adb6b48,
     type: 3}
   _menuButtonPrefab: {fileID: 2148256014770082747, guid: 50fc8bf6686bd9a4783903a46e5f64a9,
@@ -327,7 +329,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.5424528, g: 0.6704418, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
