@@ -35,8 +35,9 @@ namespace Assets.Scripts.Controllers
 
     public void Execute()
         {
+#if UNITY_EDITOR
             if (Input.GetMouseButtonDown(0)) _currentPointClick = Input.mousePosition;
-            if (Input.GetMouseButton(0)) 
+            if (Input.GetMouseButton(0))
             {
                 _direction = Input.mousePosition - _currentPointClick;
                 _onTarget.Invoke(-_direction);
@@ -46,6 +47,27 @@ namespace Assets.Scripts.Controllers
             {
                 _onThrow.Invoke(-_direction);
             }
+#else
+            if (Input.touchCount > 0)
+            {
+                var touch = Input.GetTouch(0);
+                switch (touch.phase)
+                {
+                    case TouchPhase.Began:
+                        _currentPointClick = touch.position;
+                        break;
+                    case TouchPhase.Moved:
+                    case TouchPhase.Stationary:
+                        _direction = touch.position - (Vector2)_currentPointClick;
+                        _onTarget.Invoke(-_direction);
+                        break;
+                    case TouchPhase.Ended:
+                    case TouchPhase.Canceled:
+                        _onThrow.Invoke(-_direction);
+                        break;
+                }
+            }
+#endif
         }
 
         public void Dispose()

@@ -29,11 +29,11 @@ namespace Assets.Scripts.Controllers
             scaler.matchWidthOrHeight = 0.5f;
             
             _text = Object.Instantiate(text,
-                new Vector2(_canvas.pixelRect.height / 2, _canvas.pixelRect.width / 2),
+                new Vector2(_canvas.pixelRect.width / 2, _canvas.pixelRect.height / 2),
                 Quaternion.identity, _canvas.transform);
 
             _button = Object.Instantiate(button,
-                new Vector2(_canvas.pixelRect.height / 2, _canvas.pixelRect.width / 2- _text.rectTransform.rect.height * 2),
+                new Vector2(_canvas.pixelRect.width / 2, _canvas.pixelRect.height / 2- _text.rectTransform.rect.height * 2),
                 Quaternion.identity, _canvas.transform);
             Close();
         }
